@@ -1,6 +1,8 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { HeroesComponent } from './heroes.component';
+import {HeroesComponent} from './heroes.component';
+import {HeroService} from "../hero.service";
+import {MockHeroService} from "../hero.service.mock";
 
 describe('HeroesComponent', () => {
   let component: HeroesComponent;
@@ -8,9 +10,9 @@ describe('HeroesComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ HeroesComponent ]
-    })
-    .compileComponents();
+      declarations: [HeroesComponent],
+      providers: [{provide: HeroService, useClass: MockHeroService}]
+    }).compileComponents();
   });
 
   beforeEach(() => {

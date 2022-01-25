@@ -1,6 +1,8 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { HeroSearchComponent } from './hero-search.component';
+import {HeroSearchComponent} from './hero-search.component';
+import {MockHeroService} from "../hero.service.mock";
+import {HeroService} from "../hero.service";
 
 describe('HeroSearchComponent', () => {
   let component: HeroSearchComponent;
@@ -8,9 +10,9 @@ describe('HeroSearchComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ HeroSearchComponent ]
-    })
-    .compileComponents();
+      declarations: [HeroSearchComponent],
+      providers: [{provide: HeroService, useClass: MockHeroService}]
+    }).compileComponents();
   });
 
   beforeEach(() => {
